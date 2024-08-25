@@ -2,6 +2,7 @@
 
 from src.textsummarizationv2.pipeline.data_ingestion_pipeline import DataIngestionPipeline
 from src.textsummarizationv2.pipeline.data_validation_pipeline import DataValidationPipeline
+from src.textsummarizationv2.pipeline.data_transformation_pipeline import DataTransformationPipeline
 from src.textsummarizationv2.logging import logger
 
 stage_name = "Data Ingestion"
@@ -21,3 +22,13 @@ try:
     logger.info(f"Data validation completed successfully for stage: {stage_name}")
 except Exception as e:
     logger.error(f'main data vaidation : : {e}')
+
+
+stage_name = "Data Transformation"
+
+try:
+    data_transformation = DataTransformationPipeline()
+    data_transformation.main()
+    logger.info(f"Data transformation completed successfully for stage: {stage_name}")
+except Exception as e:
+    logger.error(f'main data transformation : : {e}')

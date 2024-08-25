@@ -2,7 +2,7 @@
 
 from src.textsummarizationv2.constant import CONFIG_PATH_FILE, PARAMS_PATH_FILE
 from src.textsummarizationv2.utils.common import read_yaml, create_directories
-from src.textsummarizationv2.entity import DataIngestionConfig, DataValidationConfig
+from src.textsummarizationv2.entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig
 
 
 
@@ -47,7 +47,21 @@ class ConfigurationManager:
 
         )
         return data_validation_config
+    
 
+    def get_data_transformation_config(self)->DataTransformationConfig:
+
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            tokenizer_name=config.tokenizer_name
+        )
+
+        return data_transformation_config
 
 
 
