@@ -1,7 +1,7 @@
 
 
 import os 
-from DistilBertSummarization.logging import logger
+from src.textsummarizationv2.logging import logger
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
@@ -11,7 +11,7 @@ import yaml
 
 
 @ensure_annotations
-def read_yaml(path_to_yaml: list, verbose = True) -> ConfigBox:
+def read_yaml(path_to_yaml: Path, verbose = True) -> ConfigBox:
     """
     Args:
         path_to_yaml: input like path.
@@ -20,7 +20,7 @@ def read_yaml(path_to_yaml: list, verbose = True) -> ConfigBox:
     """
     
     try:
-        with open(path_to_yaml, 'r') as yaml_file:
+        with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
             logger.info(f'yaml_path : {yaml_file} load successfully !')
             return ConfigBox(content)
@@ -29,7 +29,7 @@ def read_yaml(path_to_yaml: list, verbose = True) -> ConfigBox:
 
 
 @ensure_annotations
-def create_directories(path_to_directories, verbose = True):
+def create_directories(path_to_directories: list, verbose = True):
 
     """
     this method are used to create directores.
@@ -64,7 +64,3 @@ def get_size(path: Path) -> int:
         return f"~ size in{size_in_kb} kb"
     except Exception as e:
         logger.error(f'error is raised from get size function :; {e}')
-
-
-
-
