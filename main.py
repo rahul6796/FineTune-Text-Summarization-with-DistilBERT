@@ -4,6 +4,7 @@ from src.textsummarizationv2.pipeline.data_ingestion_pipeline import DataIngesti
 from src.textsummarizationv2.pipeline.data_validation_pipeline import DataValidationPipeline
 from src.textsummarizationv2.pipeline.data_transformation_pipeline import DataTransformationPipeline
 from src.textsummarizationv2.pipeline.model_trainer_pipeline import ModelTrainerPipeline
+from src.textsummarizationv2.pipeline.model_evaluation_pipeline import ModelEvaluationPipeline
 from src.textsummarizationv2.logging import logger
 
 stage_name = "Data Ingestion"
@@ -36,11 +37,20 @@ except Exception as e:
 
 
 
-stage_name = "model trainer"
+# stage_name = "model trainer"
 
+# try:
+#     model_trainer = ModelTrainerPipeline()
+#     model_trainer.main()
+#     logger.info(f"Model Trainer completed successfully for stage: {stage_name}")
+# except Exception as e:
+#     logger.error(f'Model Trainer : : {e}')
+
+
+stage_name = "model evaluation"
 try:
-    model_trainer = ModelTrainerPipeline()
-    model_trainer.main()
-    logger.info(f"Model Trainer completed successfully for stage: {stage_name}")
+    model_eval = ModelEvaluationPipeline()
+    model_eval.main()
+    logger.info(f'model evaluation completed successfully for stage :: {stage_name}')
 except Exception as e:
-    logger.error(f'Model Trainer : : {e}')
+    logger.error(f'model evaluation : : {e}')
