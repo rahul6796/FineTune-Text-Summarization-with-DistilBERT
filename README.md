@@ -1,4 +1,4 @@
-# FineTune-Text-Summarization-with-DistilBERT
+# FineTune-Text-Summarization on samsum
 
 # Steps Which need to Follows the following:
 
