@@ -15,3 +15,5 @@ mypy-boto3-s3
 fastapi
 uvicorn
 Jinja2
+ensure
+python-box
