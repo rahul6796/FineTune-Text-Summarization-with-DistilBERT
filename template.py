@@ -9,7 +9,7 @@ logging.basicConfig(
 )
 
 
-project_name = "DistilBertSummarization"
+project_name = "Text-Summarization"
 
 list_of_files= [
     '.github/workflow/.gitkeep',
